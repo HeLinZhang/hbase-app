@@ -1,0 +1,28 @@
+option java_package = "zhl.study.hbaseapp.coprocessor.proto";
+
+option java_outer_classname = "RowCount";
+option java_generic_services = true;
+option optimize_for = SPEED;
+
+message RowCountParam{
+	optional string key=1;
+	repeated string val=2;
+}
+
+message RowCountResult{
+	optional string key=1;
+	repeated string val=2;
+}
+
+message RowCountRequest {
+	repeated RowCountParam context = 1;
+}
+
+message RowCountResponse {
+	repeated RowCountResult result = 1;
+}
+
+service RowCountService {
+	rpc getRowCount(RowCountRequest)
+	returns(RowCountResponse);
+}
