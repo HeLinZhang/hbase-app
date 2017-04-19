@@ -64,7 +64,7 @@ public class RowCountEndpoint extends RowCount.RowCountService implements
 	@Override
 	public void getRowCount(RpcController controller, RowCountRequest request,
 			RpcCallback<RowCountResponse> done) {
-		logger.info("request.allFields={}",request.getAllFields());
+		logger.info("regionName={},request.allFields={}",env.getRegion().getRegionNameAsString(),request.getAllFields());
 		logger.error("RowCountEndpoint-getRowCount-scanner正在准备中.....");
 	    long rowcount = 0;
 		InternalScanner scanner = null;
@@ -88,7 +88,7 @@ public class RowCountEndpoint extends RowCount.RowCountService implements
 	            scanner.close();
 	          } catch (IOException ignored) {}
 	        }
-	        logger.error("RowCountEndpoint-getRowCount-sannner结束了.....rowcount={}",rowcount);
+	        logger.error("regionName={},RowCountEndpoint-getRowCount-sannner结束了,rowcount={}",env.getRegion().getRegionNameAsString(),rowcount);
 	      }
 		
 	      RowCount.RowCountResponse.Builder responseBuilder = RowCount.RowCountResponse.newBuilder(); 

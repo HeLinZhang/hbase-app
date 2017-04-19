@@ -25,3 +25,7 @@ start-hbase.sh;
 客户端测试
 export CLASSPATH=`hbase classpath`
 java -cp $CLASSPATH zhl.study.hbaseapp.coprocessor.RowCountEndPointServer
+
+
+
+java -cp $CLASSPATH zhl.study.hbaseapp.coprocessor.RowCountObserverServer
